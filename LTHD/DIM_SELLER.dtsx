@@ -1,0 +1,1028 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/22/2022 2:01:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-9OP5DGR"
+  DTS:CreatorName="DESKTOP-9OP5DGR\German"
+  DTS:DTSID="{664CC4AB-A901-40DB-9A4A-6B72579C18D4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package3"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{0002D038-D58A-47A7-ABB5-1F91BB921C63}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.Olist.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{25D8FC4E-6C34-470D-9215-FD9740C8FD9B}"
+      DTS:ObjectName="localhost.Olist.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=Olist;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Z6esk7220G9oe+8tX6qmAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAoaBbXCC2QI+foPf7BroIcBlm4lfsGEjCFWfFkzseDggAAAAAOgAAAAAIAACAAAADrAyafjrq16DMHaXObTTRThdW61nqRxxLYnjojYm8zliAAAAACbdhw/2RIA8MxSEsFAWiwxNuNXvvn0iEAGPyQEqtIrUAAAAAiHR4n8luh5PwUASKW1aXDnxSIw+g0bhDh7F4Eiiq4YDISavJurjOCCqMpgzLHXnbHa0hgvsIS//8TPS6zbwnz</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7139F5A2-FDE1-441F-A96C-291CA4AA2655}"
+      DTS:ObjectName="localhost.olist_dwh.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=olist_dwh;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Z6esk7220G9oe+8tX6qmAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAyZOaWC4+OcEg3IGo9ChulWglhD7rmkDJ/W5v6kI7JhQAAAAAOgAAAAAIAACAAAACR/4m1mvI3qjZ4NwAxR15WTFx6d8k9m+pNsegVX/BXhCAAAAAs0vDHEJ5teU0mq6HC/53VGd9dYqhuGvMVoj2wVzao4kAAAACUZoS2ZW6bxJQhKTJEAVvMn+52K7yL0EfsnX/up7dbmBCRyC4p3EwzrZZoSpNmWVI0+no9YxEddzxyUxBjEyqx</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Seller"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{00DAC8FA-5B7A-4236-8CF8-610E1135553F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Seller"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Seller\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Seller\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Seller\Conditional Split.Inputs[Conditional Split Input].Columns[seller_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_city"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]" />
+                    <inputColumn
+                      refId="Package\Seller\Conditional Split.Inputs[Conditional Split Input].Columns[seller_state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_state"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]" />
+                    <inputColumn
+                      refId="Package\Seller\Conditional Split.Inputs[Conditional Split Input].Columns[matchSeller_City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="matchSeller_City"
+                      lineageId="Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_City]" />
+                    <inputColumn
+                      refId="Package\Seller\Conditional Split.Inputs[Conditional Split Input].Columns[matchSeller_State]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="matchSeller_State"
+                      lineageId="Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_State]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Seller\Conditional Split.Outputs[matches]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="matches"
+                  synchronousInputId="Package\Seller\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]}) ==  FALSE  &amp;&amp; #{Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]} != #{Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_City]} || [ISNULL](#{Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]}) ==  FALSE  &amp;&amp; #{Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]} != #{Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_State]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(seller_city) ==  FALSE  &amp;&amp; seller_city != matchSeller_City || ISNULL(seller_state) ==  FALSE  &amp;&amp; seller_state != matchSeller_State</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Seller\Conditional Split.Outputs[not matches]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="not matches"
+                  synchronousInputId="Package\Seller\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Seller\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Seller\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seller\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Seller\DIM Seller"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DIM Seller"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DIM_SELLER]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Seller\DIM Seller.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].Columns[seller_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_id"
+                      externalMetadataColumnId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].ExternalColumns[Seller_ID]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_id]" />
+                    <inputColumn
+                      refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].Columns[seller_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_city"
+                      externalMetadataColumnId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].ExternalColumns[Seller_City]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]" />
+                    <inputColumn
+                      refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].Columns[seller_state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_state"
+                      externalMetadataColumnId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].ExternalColumns[Seller_State]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].ExternalColumns[Seller_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Seller_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].ExternalColumns[Seller_City]"
+                      dataType="wstr"
+                      length="50"
+                      name="Seller_City" />
+                    <externalMetadataColumn
+                      refId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input].ExternalColumns[Seller_State]"
+                      dataType="wstr"
+                      length="50"
+                      name="Seller_State" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Seller\DIM Seller.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\DIM Seller.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seller\DIM Seller.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seller\DIM Seller.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seller\DIM Seller.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Seller\Get Seller"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Seller"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[olist_sellers_dataset]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Seller\Get Seller.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Olist.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Olist.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_id]"
+                      length="50"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_id]"
+                      name="seller_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_zip_code_prefix]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_zip_code_prefix]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_zip_code_prefix]"
+                      name="seller_zip_code_prefix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_city]"
+                      length="50"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]"
+                      name="seller_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_state]"
+                      length="50"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]"
+                      name="seller_state"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="seller_id" />
+                    <externalMetadataColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_zip_code_prefix]"
+                      dataType="i4"
+                      name="seller_zip_code_prefix" />
+                    <externalMetadataColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="seller_city" />
+                    <externalMetadataColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].ExternalColumns[seller_state]"
+                      dataType="wstr"
+                      length="50"
+                      name="seller_state" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_id]"
+                      name="seller_id" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_zip_code_prefix]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_zip_code_prefix]"
+                      name="seller_zip_code_prefix" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_city]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_city]"
+                      name="seller_city" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_state]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[seller_state]"
+                      name="seller_state" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Seller\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_SELLER]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_SELLER]) [refTable]
+where [refTable].[Seller_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Seller_ID" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Seller_City" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Seller_State" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Seller\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Seller\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Seller\Lookup.Inputs[Lookup Input].Columns[seller_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_id"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Seller_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Seller\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Seller\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_City]"
+                      name="matchSeller_City"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Seller_City</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Seller\Lookup.Outputs[Lookup Match Output].Columns[matchSeller_State]"
+                      name="matchSeller_State"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Seller_State</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Seller\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Seller\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Seller\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Seller\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seller\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seller\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Seller\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update dbo.DIM_SELLER
+set seller_city=?
+,seller_state=?
+where seller_id=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Seller\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.olist_dwh.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].Columns[seller_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_city"
+                      externalMetadataColumnId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_city]" />
+                    <inputColumn
+                      refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].Columns[seller_state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_state"
+                      externalMetadataColumnId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_state]" />
+                    <inputColumn
+                      refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].Columns[seller_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seller_id"
+                      externalMetadataColumnId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Seller\Get Seller.Outputs[OLE DB Source Output].Columns[seller_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Seller\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Seller\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seller\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seller\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seller\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seller\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Seller.Paths[Lookup Match Output]"
+              endId="Package\Seller\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Seller\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Seller.Paths[Lookup No Match Output]"
+              endId="Package\Seller\DIM Seller.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Seller\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Seller.Paths[matches]"
+              endId="Package\Seller\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="matches"
+              startId="Package\Seller\Conditional Split.Outputs[matches]" />
+            <path
+              refId="Package\Seller.Paths[OLE DB Source Output]"
+              endId="Package\Seller\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Seller\Get Seller.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Seller"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Seller">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Seller\Lookup"
+          TopLeft="167,134" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Seller\OLE DB Command"
+          TopLeft="204,290" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Seller\Get Seller"
+          TopLeft="125,33" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Seller\Conditional Split"
+          TopLeft="174,217" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Seller\DIM Seller"
+          TopLeft="413,165" />
+        <EdgeLayout
+          Id="Package\Seller.Paths[OLE DB Source Output]"
+          TopLeft="189,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,59"
+              Start="0,0"
+              End="35.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="31.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,29.5"
+                    Point2="35.5,29.5"
+                    Point3="35.5,33.5" />
+                  <mssgle:LineSegment
+                    End="35.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seller.Paths[matches]"
+          TopLeft="253.5,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37,31"
+              Start="0,0"
+              End="37,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="33,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33,15.5"
+                    Point2="37,15.5"
+                    Point3="37,19.5" />
+                  <mssgle:LineSegment
+                    End="37,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.524199218749999,20.5,38.0483984375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seller.Paths[Lookup No Match Output]"
+          TopLeft="282,155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131,31"
+              Start="0,0"
+              End="123.5,31">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.5,0"
+                    Point2="65.5,0"
+                    Point3="65.5,4" />
+                  <mssgle:LineSegment
+                    End="65.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.5,27"
+                    Point2="65.5,31"
+                    Point3="69.5,31" />
+                  <mssgle:LineSegment
+                    End="123.5,31" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="9.69361328125,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Seller.Paths[Lookup Match Output]"
+          TopLeft="224.5,176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29,41"
+              Start="0,0"
+              End="29,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="25,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25,20.5"
+                    Point2="29,20.5"
+                    Point3="29,24.5" />
+                  <mssgle:LineSegment
+                    End="29,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.69138671875,25.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seller\DIM Seller">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
