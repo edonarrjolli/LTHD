@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/22/2022 2:01:09 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{8FD567B6-ACD2-40AF-9308-C9E4050E055B}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{535E05CF-71D4-420B-8A1C-EBC7FEBDD74F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Z6esk7220G9oe+8tX6qmAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACbAbeSGYTCZf/689Z8tz5xH2c0l8q4q6xqlMu8AcAL1wAAAAAOgAAAAAIAACAAAACgtwGhJLzDNe8Ovtx03U/PbQOYXCESlt2xd59zjvJksiAAAABsjP5b33Re5bi9exHV500qoylEnJsY05OusywP2kr9ZkAAAADxd91yoyovK6cqIAHrvuC9Iy7K6pcJMxtFEeN392IyFrbnR5IOl8OZx13GN3cZKvHfdWIO+LYSm0md2FBN2Fn7</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Z6esk7220G9oe+8tX6qmAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAAwONKkeSveBJYmoKml475Tgbz3dxYCIp+Em26JJXaawAAAAAOgAAAAAIAACAAAADmc04nyZRf5X0D3JZMdd5xUfSxWhzPZnDNq/rcCVxpOiAAAACpNlat2PMRP4bVxAKq2deoLbISX3Z6VCE4c51wbFsVLUAAAAB3efnY6Xi7C1Sl2Xzoj0X2R9+IZYFeBjm62VCWRz3iOsq+vQ3rMbD3o103NO8LG4LqF3MtIwK14t6DdAd5a815</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Z6esk7220G9oe+8tX6qmAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA3w+bCrfnwiZhUjKwYB5QI/OpZYQvsE/Tipf+JDVgBswAAAAAOgAAAAAIAACAAAABMF/pPYXZvsdDVas5J9LkQV/2xSYltf08mKJf5oc9mWyAAAADnttCdg8n9ryP6iEOd7uIt4/tzd8leXuRUCQQdAqjv80AAAAAW/pKGMZ2nYDHNEeJiQGoT8twhUueD+3cc/J+fHo5oZ0KpAr8etH5Hhrt88WCgHnfhkE1uk1VWrTCw4RUbJV3+</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Z6esk7220G9oe+8tX6qmAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADepMaoJf6ofkDicSB9wP3JV5B7bNU9l6EYhJhVd4zpVgAAAAAOgAAAAAIAACAAAAAkMVxPfj5zgWcytMcq7lVOp+SJGYF6Q/g2uKLn1pOZvCAAAAC85e8+8mjfCZhqHDzuXEZTa71wx9ZHg61YMzCcUslHdkAAAAA9GDk8XNEuH5iySsJaCklLc4yeJ2GA0gx7/vsU6UgRJh7wolXaDIMY6Gxh59oAs/gZq4EYc0VMdOUDx1/pui6g</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -98,12 +98,12 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Products\Conditional Split.Outputs[matchesw]"
+                  refId="Package\Products\Conditional Split.Outputs[Changes]"
                   description="Output 1 of the Conditional Split Transformation"
                   errorOrTruncationOperation="Computation"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
-                  name="matchesw"
+                  name="Changes"
                   synchronousInputId="Package\Products\Conditional Split.Inputs[Conditional Split Input]"
                   truncationRowDisposition="FailComponent">
                   <properties>
@@ -126,10 +126,10 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Products\Conditional Split.Outputs[no matchesw]"
+                  refId="Package\Products\Conditional Split.Outputs[No Changes]"
                   description="Default Output of the Conditional Split Transformation"
                   exclusionGroup="1"
-                  name="no matchesw"
+                  name="No Changes"
                   synchronousInputId="Package\Products\Conditional Split.Inputs[Conditional Split Input]">
                   <properties>
                     <property
@@ -954,7 +954,7 @@ where product_id=?
               refId="Package\Products.Paths[matches]"
               endId="Package\Products\OLE DB Command.Inputs[OLE DB Command Input]"
               name="matches"
-              startId="Package\Products\Conditional Split.Outputs[matchesw]" />
+              startId="Package\Products\Conditional Split.Outputs[Changes]" />
             <path
               refId="Package\Products.Paths[OLE DB Source Output]"
               endId="Package\Products\Lookup.Inputs[Lookup Input]"
@@ -1075,7 +1075,7 @@ where product_id=?
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="35.1610026041667,25.7048567870486,45.511328125,9.7490234375"
+              BoundingBox="38.3365690104165,25.7048567870486,39.1601953125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1135,7 +1135,7 @@ where product_id=?
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-200.774720052083,24.1869639794168,96.3827734375,11.609375"
+              BoundingBox="-200.774720052084,24.1869639794168,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
